@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+<head>
+	<title>{{title[0]}}</title>
+</head>
+<body>
+
+	<h1>{{title[0]}}</h1>
+
+	<div id = "logout">
+		<button onclick="location.href = '/logout'" type = "button">Log Out</button>	
+	</div>
+
+	<div class="details_page">
+		{% for detail in details_isbn %}
+		<h5>ISBN: {{detail[0]}}</h5>
+		<h5>Title: {{detail[1]}}</h5>
+		<h5>Author: {{detail[2]}}</h5>
+		<h5>Year Published: {{detail[3]}}</h5>
+		{% endfor %}
+
+		<h5>Average Rating: {{total_average_score}}</h5>
+	</div>
+
+	<h4>Leave A Review: </h4>	
+
+	<form action ="{{url_for('book_details', isbn=book_isbn)}}" method="post">
+		1<input type="range" min="1" max="5" steps="1" value="3" name = "rating" id = "rating">5
+
+		<input type="text" name = "text_review" id = "text_review" placeholder="Write a Review">
+		<button>Submit</button>
+		<button onclick="location.href = '/search'" type = "button">Back To Search</button>
+
+	</form>
+
+	<div class = "user_msg">{{msg}}</div>
+	{% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+	<h3>Reader Reviews: </h3>
+
+		<ul>
+
+		{% for review in review_display%}
+
+			<li>{{review[0]}} - {{review[1]}}</li>
+
+		{% endfor %}
+
+		</ul>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<head>
+		<title>Welcome To BookAnnelida</title>
+	</head>
+	<body>
+
+		<h1>BookAnnelida</h1>
+
+		<form action = "{{url_for('search')}}" method="post">
+			<div id="search">
+				<input type="text" name = "search_text" placeholder="Search..." id = "search_text">
+				<button>Submit</button>
+			</div>
+		</form>
+
+		<div id = "logout">
+			<button onclick="location.href = '/logout'" type = "button">Log Out</button>	
+		</div>
+
+		<br>
+		<br>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Isbn</th>
+					<th>Title</th>
+					<th>Author</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for item in book_result %}
+
+				<tr>
+					<td><a href="books/{{item[0]}}">{{item[0]}}</a></td>
+					<td>{{item[1]}}</td>
+					<td>{{item[2]}}</td>
+				</tr>
+
+				{% endfor %}
+			</tbody>
+
+		</table>
+	</body>	
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<head>
+		<title>Register An Account</title>
+	</head>
+	<body>
+
+		<h3>Get Started</h3>
+		<form action = "{{url_for('register')}}" method="post">
+			<input type="text" name="user_new" placeholder="Username" id="user_new" required>
+			<input type="password" name="pw_new" placeholder="Password" id="pw_new" required>
+			<button type ="submit">Create Account</button>
+			<div class = "user_msg">{{msg}}</div>
+
+			<h5>After Registration, Please return home and login:</h5>
+			<div class = "return">
+				<button onclick="location.href = '/'" type = "button">Return</button>
+			</div>
+		</form>
+
+	</body>
+</html>

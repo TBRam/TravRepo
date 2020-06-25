@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<head>
+		<title>Login or Register</title>
+	</head>
+	<body>
+
+		<h1>BookAnnelida</h1>
+		<form action = "{{url_for('login')}}" method="post">
+			<input type="text" name="user" placeholder="Username" id="user" required>
+			<input type="password" name="pw" placeholder="Password" id="pw" required>
+			<button type ="submit">Login</button>
+			<div class = "user_msg">{{msg}}</div>
+		</form>	
+
+		<br>
+
+		{% for message in get_flashed_messages() %}
+        	<p>{{ message }}</p>
+    	{% endfor %}
+
+    	<br>
+    	
+		<h5>If Not A Member, Please Register Here:</h5>
+		<div class = "register">
+			<button onclick="location.href = '/register'" type = "button">Register</button>
+		</div>
+		
+	</body>	
+</html>

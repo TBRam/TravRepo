@@ -1,0 +1,7 @@
+CREATE TABLE reviews(
+	isbn VARCHAR REFERENCES books,
+	count INTEGER NOT NULL,
+	score DECIMAL(3, 2) NOT NULL,
+	id INTEGER REFERENCES users,
+	user_review VARCHAR NOT NULL
+	);
